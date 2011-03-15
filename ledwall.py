@@ -26,7 +26,7 @@ class LedMatrix:
             sock.send(msg_format % ((x, y) + pixel))
 
     def send_raw_image(self, image):
-        sock.send("03" + str(image).encode("hex")  + "\r\n")
+        self.sock.send("03" + str(image).encode("hex")  + "\r\n")
 
 
 class ColorFader:
