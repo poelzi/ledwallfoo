@@ -12,7 +12,9 @@ package require Tcl 8.5
 package require Tk
 
 bind . + {changescale +5}
+bind . 0 {changescale +5}
 bind . - {changescale -1}
+bind . 9 {changescale -1}
 
 wm resizable . 0 0
 
@@ -61,6 +63,7 @@ proc decodergbsocketline {rgbsocket line} {
 			} else {
 				paintpixel $x $y $color
 			}
+			update idletasks
 		}
 		03 {
 			if { [string length $paket] != [expr {$::xdim*$::ydim*3*2}] } {
@@ -77,7 +80,7 @@ proc decodergbsocketline {rgbsocket line} {
 					paintpixel $i $j [format "#%02x%02x%02x" $r $g $b]
 				}
 			}
-      update idletasks
+			update idletasks
 		}
 		default {
 			return 0
