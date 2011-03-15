@@ -77,6 +77,7 @@ proc decodergbsocketline {rgbsocket line} {
 					paintpixel $i $j [format "#%02x%02x%02x" $r $g $b]
 				}
 			}
+      update idletasks
 		}
 		default {
 			return 0
