@@ -20,7 +20,7 @@ class LedMatrix:
         size = self.size
         sock = self.sock
 
-        msg_format = "%02i" * 2 + "%03i" * 3 + "\n"
+        msg_format = "02" + "%02x" * 2 + "%02x" * 3 + "\r\n"
 
         for index, pixel in enumerate(image.getdata()):
             # 1-based index?
@@ -50,6 +50,7 @@ class ColorFader:
         self.pos = (major, minor)
 
     def color(self):
+        return "#ff00ee"
         colors = self.colors
         pos = self.pos
         fade_steps = float(self.fade_steps)
